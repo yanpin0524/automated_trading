@@ -10,10 +10,10 @@ def on_message(ws, message):
     print("Message: " + message)
     if json.loads(message)["destination"] != 'ping':
         ws.send(json.dumps({
-          "destination": "ping",
-          "correlationId": "5",
-          "cst": cst,
-          "securityToken": security_token
+            "destination": "ping",
+            "correlationId": "5",
+            "cst": cst,
+            "securityToken": security_token
         }))
 
 def on_error(ws, error):

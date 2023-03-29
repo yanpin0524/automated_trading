@@ -17,10 +17,5 @@ def create_new_session(identifier, password, API_KEY):
     return requests.post(url='{}/session'.format(basic_url), data=payload, headers=headers)
 
 
-def logout_session(token, cst):
-    headers = {
-        'X-SECURITY-TOKEN': token,
-        'CST': cst
-    }
-
+def logout_session(headers):
     return requests.delete(url='{}/session'.format(basic_url), headers=headers)

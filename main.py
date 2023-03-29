@@ -1,4 +1,5 @@
-import capital_API.session as API_session
+from capital_API import session
+from capital_API import prices
 import os
 from dotenv import load_dotenv
 from pprint import PrettyPrinter
@@ -13,11 +14,16 @@ profile = {
     "API_KEY": os.getenv('X-CAP-API-KEY')
 }
 
-res = API_session.create_new_session(
+res = session.create_new_session(
     profile['identifier'], profile['password'], profile['API_KEY'])
 
 pp.pprint(res.json())
+print('-------------------')
 
-token = res.headers['X-SECURITY-TOKEN']
-cst = res.headers['CST']
+headers = {
+    'X-SECURITY-TOKEN': res.headers['X-SECURITY-TOKEN'],
+    'CST': res.headers['CST']
+}
 
+res2 = prices.get_prices(headers, 'US100', 'HOUR_4')
+pp.pprint(res2.json())

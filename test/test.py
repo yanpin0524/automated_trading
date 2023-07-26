@@ -1,9 +1,9 @@
-import backtrader as bt
-import yfinance as yf
 import os
 from pathlib import Path
-import datetime
-import backtrader_plotting as btp
+
+import backtrader as bt
+import yfinance as yf
+
 
 class TestStrategy(bt.Strategy):
     def __init__(self):
